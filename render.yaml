@@ -1,0 +1,12 @@
+services:
+  - type: cron
+    name: nba-game-threads
+    runtime: python
+    schedule: "0 17 * * *"  # 12:00 PM EST (17:00 UTC)
+    buildCommand: pip install -r requirements.txt
+    startCommand: python nba_game_threads.py
+    envVars:
+      - key: DISCORD_BOT_TOKEN
+        sync: false
+      - key: DISCORD_CHANNEL_ID
+        sync: false
